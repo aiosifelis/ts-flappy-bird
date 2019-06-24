@@ -1,0 +1,29 @@
+{
+    "name": "ts-canvas",
+    "version": "1.0.0",
+    "main": "index.js",
+    "description": "A Typescripe Canvas Starter",
+    "license": "MIT",
+    "scripts": {
+        "dev": "webpack-dev-server --mode development",
+        "build": "NODE_ENV=production webpack",
+        "start": "serve dist"
+    },
+    "devDependencies": {
+        "@types/node": "^12.0.4",
+        "html-webpack-plugin": "^3.2.0",
+        "prettier": "^1.17.1",
+        "ts-loader": "^6.0.2",
+        "tslint": "^5.17.0",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-plugin-prettier": "^2.0.1",
+        "typescript": "^3.5.1",
+        "webpack": "^4.32.2",
+        "webpack-cli": "^3.3.2",
+        "webpack-dev-server": "^3.5.1",
+        "webpack-node-externals": "^1.7.2"
+    },
+    "dependencies": {
+        "serve": "^11.0.1"
+    }
+}

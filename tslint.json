@@ -1,0 +1,27 @@
+{
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:latest",
+        "tslint-config-prettier",
+        "tslint-plugin-prettier"
+    ],
+    "jsRules": {},
+    "rules": {
+        "quotemark": [true, "single"],
+        "semicolon": [true, "never"],
+        "interface-name": [true, "always-prefix"],
+        "trailing-comma": [true, { "multiline": "never", "singleline": "never" }],
+        "no-submodule-imports": false,
+        "prefer-object-spread": false,
+        "no-implicit-dependencies": false,
+        "space-within-parens": [true, "always"],
+        "import-spacing": true,
+        "object-literal-sort-keys": false,
+        "no-var-requires": false,
+        "no-bitwise": false
+    },
+    "linterOptions": {
+        "exclude": ["src/**/*.d.ts"]
+    },
+    "rulesDirectory": []
+}
