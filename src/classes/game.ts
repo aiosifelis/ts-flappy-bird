@@ -25,7 +25,7 @@ class Game implements IGame {
         this.background = '#333333'
         this.ctx = ctx
         this.state = state
-        this.bird = new Bird(this.ctx, this.state)
+        this.bird = new Bird(this.ctx, this.state, this.gameOver)
         this.pipes = []
         this.score = new Score(this.ctx, this.state)
     }
@@ -54,14 +54,16 @@ class Game implements IGame {
     private updatePipes() {
         for (let i = this.pipes.length - 1; i >= 0; i--) {
             const pipe = this.pipes[i]
-            pipe.update()
-            if (pipe.offScreen()) {
-                this.score.update(0.5)
-                this.pipes.splice(i, 1)
-            }
+            if (pipe) {
+                pipe.update()
+                if (pipe.offScreen()) {
+                    this.score.update(0.5)
+                    this.pipes.splice(i, 1)
+                }
 
-            if (pipe.hits(this.bird)) {
-                this.score.update(-0.5)
+                if (pipe.hits(this.bird)) {
+                    this.gameOver()
+                }
             }
         }
     }
@@ -77,13 +79,17 @@ class Game implements IGame {
             const hb = this.state.height - yb
             this.pipes.push(new Pipe(this.ctx, this.state, yt, ht))
             this.pipes.push(new Pipe(this.ctx, this.state, yb, hb))
-            console.log(this.pipes)
         }
 
         for (let i = this.pipes.length - 1; i >= 0; i--) {
             const pipe = this.pipes[i]
             pipe.render()
         }
+    }
+
+    private gameOver = () => {
+        this.pipes = []
+        this.score.reset()
     }
 }
 

@@ -12,6 +12,7 @@ interface IBird {
     render: () => void
     update: () => void
     jump: () => void
+    onLoose: () => void
 }
 
 class Bird implements IBird {
@@ -23,7 +24,12 @@ class Bird implements IBird {
     public velocity: number
     public gravity: number
     public upForce: number
-    constructor(ctx: CanvasRenderingContext2D, state: IState) {
+    public onLoose: () => void
+    constructor(
+        ctx: CanvasRenderingContext2D,
+        state: IState,
+        onLoose: () => void
+    ) {
         this.ctx = ctx
         this.state = state
         this.r = 15
@@ -32,6 +38,7 @@ class Bird implements IBird {
         this.velocity = 0
         this.gravity = 0.6
         this.upForce = -5
+        this.onLoose = onLoose
     }
 
     public render() {
@@ -52,6 +59,7 @@ class Bird implements IBird {
         if (this.y >= this.state.height - this.r) {
             this.y = this.state.height - this.r
             this.velocity = 0
+            this.onLoose()
         }
     }
 

@@ -58,10 +58,10 @@ class Pipe implements IPipe {
     }
 
     public hits(bird: Bird): boolean {
-        const bd = bird.x
         const hits: boolean =
-            (bd > this.x && bd < this.x + this.w) ||
-            (bd > this.y && bd < this.y + this.h)
+            bird.x > this.x &&
+            bird.x < this.x + this.w &&
+            (bird.y > this.y && bird.y < this.y + this.h)
         if (hits) {
             this.color = '#ff0000'
         }
