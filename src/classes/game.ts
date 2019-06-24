@@ -46,7 +46,10 @@ class Game implements IGame {
     private updateBird() {
         this.bird.update()
 
-        if (this.state.keyState[this.state.keys.SPACE]) {
+        if (
+            this.state.keyState[this.state.keys.SPACE] ||
+            this.state.mouseDown
+        ) {
             this.bird.jump()
         }
     }
