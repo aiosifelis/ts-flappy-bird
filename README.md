@@ -1,6 +1,6 @@
 # ts-canvas
 
-A Typescript canvas starter
+A Typescript version of the famous game `flappy bird`
 
 ## Installation
 
